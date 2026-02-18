@@ -14,8 +14,7 @@ class Distance:
             return Distance(
                 km=self.km + other
             )
-        else:
-            return NotImplemented
+        return NotImplemented
 
     def __iadd__(self, other: Distance | int | float) -> Distance:
         if isinstance(other, Distance):
@@ -32,49 +31,42 @@ class Distance:
             return Distance(
                 km=self.km * other
             )
-        else:
-            return NotImplemented
+        return NotImplemented
 
     def __truediv__(self, other: int | float) -> Distance:
         if isinstance(other, (int, float)):
-            if other and other != 0:
+            if other != 0:
                 return Distance(
                     km=round(self.km / other, 2)
                 )
             else:
-                return ZeroDivisionError
-        else:
-            return NotImplemented
+                return ZeroDivisionError()
+        return NotImplemented
 
     def __lt__(self, other: object) -> bool:
         if isinstance(other, Distance):
             return (self.km < other.km)
-        else:
-            return (self.km < other)
+        return (self.km < other)
 
     def __gt__(self, other: object) -> bool:
         if isinstance(other, Distance):
             return (self.km > other.km)
-        else:
-            return (self.km > other)
+        return (self.km > other)
 
     def __le__(self, other: object) -> bool:
         if isinstance(other, Distance):
             return (self.km <= other.km)
-        else:
-            return (self.km <= other)
+        return (self.km <= other)
 
     def __ge__(self, other: object) -> bool:
         if isinstance(other, Distance):
             return (self.km >= other.km)
-        else:
-            return (self.km >= other)
+        return (self.km >= other)
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Distance):
             return (self.km == other.km)
-        else:
-            return (self.km == other)
+        return (self.km == other)
 
     def __str__(self) -> str:
         return f"Distance: {self.km} kilometers."
